@@ -1,31 +1,25 @@
 package utils;
 
-import java.io.FileInputStream;
-import java.util.Properties;
-
 import org.openqa.selenium.WebDriver;
 
 public class BaseClass {
 
-    public static WebDriver driver;
-    public static Properties prop;
+    protected WebDriver driver;
 
-    public static void setup() {
-        try {
-            prop = new Properties();
-            FileInputStream fis = new FileInputStream("src/test/resources/features/config.properties");
-            prop.load(fis);
-
-            driver = DriverSetup.getDriver();
-            driver.manage().window().maximize();
-            driver.get(prop.getProperty("url"));
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    // Setup method
+    public void setup() {
+        driver = DriverSetup.initDriver();
+        driver.get(DriverSetup.getURL());
     }
 
-    public static void tearDown() {
+    // TearDown method
+    public void tearDown() {
         DriverSetup.quitDriver();
     }
+
+    // Get driver method
+    public WebDriver getDriver() {
+        return driver;
+    }
 }
+

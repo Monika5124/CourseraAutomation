@@ -7,12 +7,12 @@ import utils.BaseClass;
 public class Hooks extends BaseClass {
 
     @Before
-    public void setupTest() {
+    public void start() {
         setup();
     }
 
     @After
-    public void tearDownTest() {
+    public void end() {
         tearDown();
     }
 }

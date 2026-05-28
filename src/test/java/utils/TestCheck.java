@@ -1,19 +1,15 @@
 package utils;
 
-import org.testng.annotations.Test;
-
 public class TestCheck {
 
-    @Test
-    public void testBrowserLaunch() {
+    public static void main(String[] args) {
 
-        // Start browser
-        BaseClass.setup();
+        DriverSetup.initDriver();
 
-        // Print message
-        System.out.println("Browser launched successfully");
+        DriverSetup.getDriver().get(DriverSetup.getURL());
 
-        // Close browser
-        BaseClass.tearDown();
+        System.out.println("Browser Launched Successfully");
+
+        DriverSetup.quitDriver();
     }
 }
